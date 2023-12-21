@@ -11,15 +11,18 @@ export class ProxyFetch {
   private mode: "proxy" | "direct" = "proxy";
 
   constructor(
-    mode?: "proxy" | "direct"
+    mode?: "proxy" | "direct",
   ) {
     this.proxies = proxies.proxies;
     this.mode = mode ?? this.mode;
 
     if (this.mode === "direct") {
-      this.fetch = async (url: string, options?: RequestInit): Promise<Response> => {
+      this.fetch = async (
+        url: string,
+        options?: RequestInit,
+      ): Promise<Response> => {
         return await fetch(url, options);
-      }
+      };
     }
   }
 

@@ -43,23 +43,32 @@ export class PayPay {
 
   private async signupRequest(tel: string) {
     const options = this.baseOptionsGen();
-    const response = await this.proxy.fetch(this.signupEndPoint, {
-      ...options,
-      body: JSON.stringify({
-        mobile: tel,
-        password: this.genPassword(),
-        client_uuid: crypto.randomUUID(),
-        add_otp_prefix: true,
-      }),
-    });
+    let response;
+    try {
+      response = await this.proxy.fetch(this.signupEndPoint, {
+        ...options,
+        body: JSON.stringify({
+          mobile: tel,
+          password: this.genPassword(),
+          client_uuid: crypto.randomUUID(),
+          add_otp_prefix: true,
+        }),
+      });
+    }catch (_e) {
+      console.warn("PROXY ERROR");
+    }
     return response;
   }
 
   public async isExist(tel: string): Promise<boolean> {
     const response = await this.signupRequest(tel);
-    console.log(response);
-    const code = (await response.json())["result_info"]["result_code_id"];
+    const code = (await response?.json())["result_info"]["result_code_id"];
+    if (response?.status === 400) {
+      console.warn("TELL NUMBER IS INVALID");
+      return false;
+    }
+
     return code === "01103101";
   }
 }
-console.log("Created by @amex2189 (https://twitter.com/amex2189)")
+console.log("Created by @amex2189 (https://twitter.com/amex2189)");
