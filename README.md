@@ -1,6 +1,9 @@
 # paypay-tel-brute-force
 PayPayに登録されている電話番号を総当たりするコード
 
+- [x] Fingerprint Bypass
+- [x] Faster
+
 Created by [@amex2189](https://twitter.com/amex2189)
 <!-- Created by @amex2189 -->
 
