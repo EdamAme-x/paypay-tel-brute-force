@@ -13,7 +13,7 @@ export class PayPay {
   private baseOptionsGen() {
     return {
       headers: {
-        accept: "application/json, text/plain, /",
+        accept: "application/json, text/plain",
         "accept-language": "ja,en-US;q=0.9,en;q=0.8",
         "content-type": "application/json",
         "sec-ch-ua":
