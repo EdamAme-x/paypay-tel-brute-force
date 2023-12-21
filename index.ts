@@ -1,4 +1,4 @@
-import { Fingerprint } from '@/fingerprint.ts';
+import { Fingerprint } from "@/fingerprint.ts";
 import { PhoneNumber } from "@/phonenumber.ts";
 import { ProxyFetch } from "@/proxy.ts";
 

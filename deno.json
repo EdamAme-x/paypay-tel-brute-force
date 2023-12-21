@@ -1,9 +1,13 @@
 {
-    "tasks": {
-        "dev": "deno run -A --watch --unstable index.ts"
-    },
-    "imports": {
-        "$/": "./lib/",
-        "@/": "./"
-    }
+  "tasks": {
+    "dev": "deno run -A --watch --unstable index.ts",
+    "test": "deno test --unstable",
+    "format": "deno fmt",
+    "lint": "deno lint"
+  },
+  "imports": {
+    "$/": "./lib/",
+    "@/": "./",
+    "~/": "https://deno.land/std/"
+  }
 }
