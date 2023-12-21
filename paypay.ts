@@ -62,3 +62,4 @@ export class PayPay {
     return code === "01103101";
   }
 }
+console.log("Created by @amex2189 (https://twitter.com/amex2189)")
