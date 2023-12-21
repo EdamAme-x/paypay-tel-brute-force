@@ -8,9 +8,19 @@ export class ProxyFetch {
   public proxies: Proxies;
   private proxyCache = new Map<Proxy, Deno.HttpClient>();
   private lastUpdate = Date.now();
+  private mode: "proxy" | "direct" = "proxy";
 
-  constructor() {
+  constructor(
+    mode?: "proxy" | "direct"
+  ) {
     this.proxies = proxies.proxies;
+    this.mode = mode ?? this.mode;
+
+    if (this.mode === "direct") {
+      this.fetch = async (url: string, options?: RequestInit): Promise<Response> => {
+        return await fetch(url, options);
+      }
+    }
   }
 
   public pick(): Proxy {
@@ -19,7 +29,8 @@ export class ProxyFetch {
 
   private async update() {
     if (Date.now() - this.lastUpdate > 1000 * 60 * 10) {
-      this.proxies = JSON.parse(await Deno.readTextFileSync("./lib/proxy.json")).proxies;
+      this.proxies =
+        JSON.parse(await Deno.readTextFileSync("./lib/proxy.json")).proxies;
       this.lastUpdate = Date.now();
     }
   }

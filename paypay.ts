@@ -2,12 +2,12 @@ import { ProxyFetch } from "@/proxy.ts";
 import { Fingerprint } from "@/fingerprint.ts";
 
 export class PayPay {
-  signupEndPoint: string = "https://www.paypay.ne.jp/app/v1/sign-up/mobile";
+  signupEndPoint = "https://www.paypay.ne.jp/app/v1/sign-up/mobile";
   constructor(
-    public proxy: ProxyFetch = new ProxyFetch(),
+    public proxy: ProxyFetch = new ProxyFetch("proxy"),
     public fingerprint: Fingerprint = new Fingerprint(
-      Math.floor(Math.random() * 10)
-    )
+      Math.floor(Math.random() * 10),
+    ),
   ) {}
 
   private baseOptionsGen() {
@@ -35,8 +35,9 @@ export class PayPay {
 
   private genPassword(): string {
     const map = "0a1B2c3D4e5F6g7H8i9J";
-    return Array.from({ length: 5 }, () =>
-      map[Math.floor(Math.random() * map.length)]
+    return Array.from(
+      { length: 5 },
+      () => map[Math.floor(Math.random() * map.length)],
     ).join("") + (Math.random() > 0.5 ? "Ac2" : "cX3");
   }
 
@@ -52,5 +53,12 @@ export class PayPay {
       }),
     });
     return response;
+  }
+
+  public async isExist(tel: string): Promise<boolean> {
+    const response = await this.signupRequest(tel);
+    console.log(response);
+    const code = (await response.json())["result_info"]["result_code_id"];
+    return code === "01103101";
   }
 }
