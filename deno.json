@@ -1,0 +1,9 @@
+{
+    "tasks": {
+        "dev": "deno run -A --watch --unstable index.ts"
+    },
+    "imports": {
+        "$/": "./lib/",
+        "@/": "./"
+    }
+}
