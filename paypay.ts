@@ -61,11 +61,15 @@ export class PayPay {
   }
 
   public async isExist(tel: string): Promise<boolean> {
+    if (/(070|080|090)\\d{8}/.test(tel)) {
+      console.warn("Invalid number");
+      return false;
+    }
+
     const response = await this.signupRequest(tel);
     const code = (await response?.json())["result_info"]["result_code_id"];
     if (response?.status === 400) {
-      console.warn("TELL NUMBER IS INVALID");
-      return false;
+      return true;
     }
 
     return code === "01103101";
