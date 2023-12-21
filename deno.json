@@ -8,6 +8,6 @@
   "imports": {
     "$/": "./lib/",
     "@/": "./",
-    "~/": "https://deno.land/std/"
+    "~/": "https://deno.land/std@0.209.0/"
   }
 }
