@@ -24,3 +24,5 @@ Created by [@amex2189](https://twitter.com/amex2189)
 おそらく串が死にました(ブラリスに載った)。
 他の串に変えてください。時間がたてば解除されます。
 `deno task proxyCheck`で簡易的に確認できます。
+`deno task debug`で起動して、Forbiddenと出る場合は串が規制されています。
+解除まで待つ or 串を変える

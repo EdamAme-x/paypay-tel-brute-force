@@ -73,6 +73,12 @@ export class PayPay {
       }
 
       const response = await this.signupRequest(tel);
+      if (Deno.args[0] === "debug") {
+        Logger.log(`${Logger.timeStamp()} ${Logger.green("(@)")} STATUS : ${
+          Logger.red(response?.statusText || "EMPTY")
+        }`);
+      }
+
       const code = (await response?.json())["result_info"]["result_code_id"];
       if (response?.status === 400) {
         return true;
