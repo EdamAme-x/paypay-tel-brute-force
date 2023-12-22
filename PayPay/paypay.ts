@@ -55,8 +55,13 @@ export class PayPay {
           add_otp_prefix: true,
         }),
       });
-      // deno-lint-ignore no-empty
-    } catch (_e) {}
+    } catch (_e) {
+      Logger.log(`${Logger.timeStamp()} ${Logger.yellow("(*)")} PROXY ERROR`);
+
+      if (Deno.args[0] === "debug") {
+        console.log(_e);
+      }
+    }
     return response;
   }
 
@@ -75,12 +80,6 @@ export class PayPay {
 
       return code === "01103101";
     } catch (_e) {
-      Logger.log(`${Logger.timeStamp()} ${Logger.yellow("(*)")} PROXY ERROR`);
-
-      if (Deno.args[0] === "debug") {
-        console.log(_e);
-      }
-
       return false;
     }
   }

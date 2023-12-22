@@ -24,7 +24,7 @@ export async function itWorks(proxy: Proxy) {
 Proxies.proxies.forEach((proxy) => {
   itWorks(proxy).then((works) => {
     if (!works) {
-      console.log("proxy is not working! : " + proxy.ip);
+      console.log("proxy is not working! : " + proxy.ip + ":" + proxy.port);
     }
   });
 });
