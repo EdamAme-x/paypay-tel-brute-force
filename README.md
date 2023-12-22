@@ -16,3 +16,4 @@ Created by [@amex2189](https://twitter.com/amex2189)
 
 権利の購入は可能です。
 TwitterのDMまで
+(本当に使えるか怪しいと思うので限定的に公開しています。)
