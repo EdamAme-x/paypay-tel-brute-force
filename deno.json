@@ -2,7 +2,7 @@
   "tasks": {
     "dev": "deno run -A --watch --unstable index.ts",
     "start": "deno run -A --unstable index.ts",
-    "proxyCheck": "deno run -A --unstable ./lib/proxyCheck.ts",
+    "proxyCheck": "deno run -A --unstable ./Proxy/proxyCheck.ts",
     "test": "deno test --unstable",
     "format": "deno fmt",
     "lint": "deno lint"
