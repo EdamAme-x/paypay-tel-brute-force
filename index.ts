@@ -1,6 +1,8 @@
-import { PhoneNumber } from "@/phonenumber.ts";
-import { PayPay } from "@/paypay.ts";
+import { PhoneNumber } from "@/PhoneNumber/phonenumber.ts";
+import { PayPay } from "@/PayPay/paypay.ts";
 import { writeNewPhoneNumber } from "@/utils/writeNewPhoneNumber.ts";
+
+console.log("Created by @amex2189 (https://twitter.com/amex2189)");
 
 const tel = new PhoneNumber(["080", "090"]);
 

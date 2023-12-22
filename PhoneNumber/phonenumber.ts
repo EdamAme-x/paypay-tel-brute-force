@@ -1,4 +1,4 @@
-import { phonePrefix } from "@/types.ts";
+import { phonePrefix } from "@/types/types.ts";
 
 export class PhoneNumber {
   constructor(

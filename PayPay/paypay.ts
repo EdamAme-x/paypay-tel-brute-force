@@ -1,5 +1,5 @@
-import { ProxyFetch } from "@/proxy.ts";
-import { Fingerprint } from "@/fingerprint.ts";
+import { ProxyFetch } from "@/Proxy/proxy.ts";
+import { Fingerprint } from "@/Fingerprint/fingerprint.ts";
 
 export class PayPay {
   signupEndPoint = "https://www.paypay.ne.jp/app/v1/sign-up/mobile";
@@ -54,25 +54,27 @@ export class PayPay {
           add_otp_prefix: true,
         }),
       });
-    }catch (_e) {
-      console.warn("PROXY ERROR");
-    }
+    // deno-lint-ignore no-empty
+    } catch (_e) {}
     return response;
   }
 
   public async isExist(tel: string): Promise<boolean> {
-    if (!/(070|080|090)\d{8}/.test(tel)) {
-      console.warn("Invalid number");
+    try {
+      if (!/(070|080|090)\d{8}/.test(tel)) {
+        console.warn("Invalid number");
+        return false;
+      }
+  
+      const response = await this.signupRequest(tel);
+      const code = (await response?.json())["result_info"]["result_code_id"];
+      if (response?.status === 400) {
+        return true;
+      }
+  
+      return code === "01103101";
+    }catch (_e) {
       return false;
     }
-
-    const response = await this.signupRequest(tel);
-    const code = (await response?.json())["result_info"]["result_code_id"];
-    if (response?.status === 400) {
-      return true;
-    }
-
-    return code === "01103101";
   }
 }
-console.log("Created by @amex2189 (https://twitter.com/amex2189)");

@@ -7,7 +7,7 @@ export type Proxy = Proxies[number];
 export class ProxyFetch {
   public proxies: Proxies;
   private proxyCache = new Map<Proxy, Deno.HttpClient>();
-  private lastUpdate = Date.now();
+  private lastUpdate = 0;
   private mode: "proxy" | "direct" = "proxy";
 
   constructor(
@@ -34,6 +34,7 @@ export class ProxyFetch {
     if (Date.now() - this.lastUpdate > 1000 * 60 * 10) {
       this.proxies =
         JSON.parse(await Deno.readTextFileSync("./lib/proxy.json")).proxies;
+
       this.lastUpdate = Date.now();
     }
   }

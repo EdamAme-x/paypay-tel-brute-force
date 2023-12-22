@@ -1,6 +1,6 @@
-import { PhoneNumber } from "@/phonenumber.ts";
-import { Fingerprint } from "@/fingerprint.ts";
-import { ProxyFetch } from "@/proxy.ts";
+import { PhoneNumber } from "@/PhoneNumber/phonenumber.ts";
+import { Fingerprint } from "@/Fingerprint/fingerprint.ts";
+import { ProxyFetch } from "@/Proxy/proxy.ts";
 import { assert, assertEquals } from "~/testing/asserts.ts";
 
 Deno.test({
