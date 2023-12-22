@@ -1,5 +1,6 @@
 import { ProxyFetch } from "@/Proxy/proxy.ts";
 import { Fingerprint } from "@/Fingerprint/fingerprint.ts";
+import { Logger } from '@/Logger/logger.ts';
 
 export class PayPay {
   signupEndPoint = "https://www.paypay.ne.jp/app/v1/sign-up/mobile";
@@ -54,7 +55,7 @@ export class PayPay {
           add_otp_prefix: true,
         }),
       });
-    // deno-lint-ignore no-empty
+      // deno-lint-ignore no-empty
     } catch (_e) {}
     return response;
   }
@@ -65,15 +66,16 @@ export class PayPay {
         console.warn("Invalid number");
         return false;
       }
-  
+
       const response = await this.signupRequest(tel);
       const code = (await response?.json())["result_info"]["result_code_id"];
       if (response?.status === 400) {
         return true;
       }
-  
+
       return code === "01103101";
-    }catch (_e) {
+    } catch (_e) {
+      Logger.log(`${Logger.timeStamp()} ${Logger.yellow("(*)")} PROXY ERROR`);
       return false;
     }
   }

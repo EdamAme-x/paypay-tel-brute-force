@@ -1,5 +1,5 @@
 import { Proxy } from "@/Proxy/proxy.ts";
-import Proxies from "@/lib/proxy.json" assert { type: "json" };
+import Proxies from "$/proxy.json" assert { type: "json" };
 
 export async function itWorks(proxy: Proxy) {
   let result = false;
