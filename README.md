@@ -5,6 +5,7 @@ PayPayに登録されている電話番号を総当たりするコード **30%**
 
 - [x] Fingerprint Bypass
 - [x] Faster
+- [x] High Perfomance
 
 Created by [@amex2189](https://twitter.com/amex2189)
 
@@ -16,3 +17,10 @@ Created by [@amex2189](https://twitter.com/amex2189)
 
 権利の購入は可能です。 TwitterのDMまで
 (本当に使えるか怪しいと思うので限定的に公開しています。)
+
+### Q & A
+
+- 途中から見つけられなくなった
+おそらく串が死にました(ブラリスに載った)。
+他の串に変えてください。時間がたてば解除されます。
+`deno task proxyCheck`で簡易的に確認できます。

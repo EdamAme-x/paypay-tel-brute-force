@@ -9,7 +9,7 @@ export async function itWorks(proxy: Proxy) {
       proxy: { url: `http://${proxy.ip}:${proxy.port}` },
     });
 
-    await fetch("https://www.google.com/", {
+    await fetch("https://www.paypay.ne.jp/", {
       client,
     });
 
